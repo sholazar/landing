@@ -32,11 +32,11 @@ if (!empty($_POST)) {
                     $picture = $uploadfile;
                 }
             } else {
-                echo 'size'; //файл слишком большой
+                echo 'size_error'; //файл слишком большой
                 exit;
             }
         } else {
-            echo 'format'; //неверный формат
+            echo 'format_error'; //неверный формат
             exit;
         }
     }
@@ -44,9 +44,9 @@ if (!empty($_POST)) {
     $sub = '=?utf-8?B?' . base64_encode($title) . '?=';
 
     if (send_mail($to, $sub, $mes, $picture, 'Test <mailer@deltaplan.by>')) {
-        echo 'mail';
+        echo 'success';
     } else {
-        echo 'nosend'; //почта не отправлена
+        echo 'failed'; //почта не отправлена
     }
 
 }
