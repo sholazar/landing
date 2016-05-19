@@ -19,9 +19,7 @@ if (!empty($_POST)) {
         $mes .= ": <b>{$_POST['']}</b><br>";
     }
 
-
     $file_format = strrchr($_FILES['file']['name'], '.');
-
     $whitelist = array(".jpeg", ".JPEG", ".JPG", ".PNG", ".PDF", ".jpg", ".png", ".pdf");
 
     //если файл прикреплён
@@ -48,7 +46,6 @@ if (!empty($_POST)) {
     } else {
         echo 'failed'; //почта не отправлена
     }
-
 }
 
 function send_mail($to, $thm, $html, $path, $from)
@@ -119,7 +116,7 @@ function sms($phone, $name, $number)
         CURLOPT_POSTFIELDS     => array(
             'r'        => 'api/' . $func,
             'user'     => 'deltaplanirovanie@gmail.com',
-            'apikey'   => '0UmzxrSo9x',
+            'apikey'   => '',
             'messages' => $rawData)
     ));
 
