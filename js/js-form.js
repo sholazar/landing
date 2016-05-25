@@ -83,8 +83,8 @@ function succ(answer, form, file, message_text) {
  */
 function validate(phone) {
     phone
-        .animate({backgroundColor: "#ff0000", opacity: 0.8}, 300)
-        .animate({backgroundColor: "#fff", opacity: 1}, 300);
+        .animate({boxShadow: 'inset 0 0 0px 5px #ff0000'})
+        .animate({boxShadow: "inset 0 0 0 0 transparent"});
 }
 
 /*
