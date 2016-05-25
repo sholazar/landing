@@ -7,7 +7,7 @@ $(document).ready(function () {
     var form_file = $('#seven_form input[name="file"]');
     form.submit(function () {
         if (!form_phone.val()) {
-            validate_phone(form_phone);
+            validate(form_phone);
         } else {
             ajax(form, form_file, message_text)
         }
@@ -81,7 +81,7 @@ function succ(answer, form, file, message_text) {
 /*
 Валидация телефона
  */
-function validate_phone(phone) {
+function validate(phone) {
     phone
         .animate({backgroundColor: "#ff0000", opacity: 0.8}, 300)
         .animate({backgroundColor: "#fff", opacity: 1}, 300);
