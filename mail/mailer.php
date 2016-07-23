@@ -6,7 +6,8 @@ if (!empty($_POST)) {
     $picture = false;
 
     $to = "sholazar2@gmail.com";
-    $title = 'Заявка с сайта ';
+    $site = '';
+    $title = 'Заявка с сайта ' . $site;
     $mes = "";
 
     if (isset($_POST['phone'])) {
@@ -41,7 +42,7 @@ if (!empty($_POST)) {
 
     $sub = '=?utf-8?B?' . base64_encode($title) . '?=';
 
-    if (send_mail($to, $sub, $mes, $picture, 'Test <mailer@deltaplan.by>')) {
+    if (send_mail($to, $sub, $mes, $picture, $site . ' <mailer@deltaplan.by>')) {
         echo 'success';
     } else {
         echo 'failed'; //почта не отправлена

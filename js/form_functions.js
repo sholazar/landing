@@ -1,28 +1,25 @@
-$(document).ready(function () {
+/* конечная функция */
+function mail(form) {
+    var message_text = 'Ваша заявка отправлена<br>Мы скоро свяжемся с Вами!', form_file, form_phone;
 
-    var message_text = 'Ваша заявка отправлена<br>Мы скоро свяжемся с Вами!';
+    form_phone = $(form).find('input[name="phone"]');
 
-    var form = $('#seven_form');
-    var form_phone = $('#seven_form input[name="phone"]');
-    var form_file = $('#seven_form input[name="file"]');
-    form.submit(function () {
-        if (!form_phone.val()) {
-            validate(form_phone);
-        } else {
-            ajax(form, form_file, message_text)
-        }
-        return false;
-    });
+    if ($(form).find('input').is('input[name="file"]')) {
+        form_file = $(form).find('input[name="file"]');
+    } else {
+        form_file = false;
+    }
 
-    form_file.on('change', function () {
-        file_button(form_file);
-    });
-});
+    if (!form_phone.val()) {
+        validate(form_phone);
+    } else {
+        ajax(form, form_file, message_text)
+    }
 
+    return false;
+}
 
-/*
- ajax функция
- */
+/* ajax */
 function ajax(form, form_file, message_text) {
     var formData = new FormData(form[0]);
     $.ajax({
@@ -39,9 +36,7 @@ function ajax(form, form_file, message_text) {
 }
 
 
-/*
-Обработка ответа сервера
- */
+/* Обработка ответа сервера */
 function succ(answer, form, file, message_text) {
     switch (answer) {
         case 'success':
@@ -62,34 +57,27 @@ function succ(answer, form, file, message_text) {
         case 'failed':
             break
         case 'format_error':
-            if (file) {
-                file.siblings('span')
-                    .html('Неверный формат')
-                    .css({'background': '#ff0000'});
-            }
+            file_answ(file, 'Неверный формат');
             break
         case 'size_error':
-            if (file) {
-                file.siblings('span')
-                    .html('Слишком большой файл')
-                    .css({'background': '#ff0000'});
-            }
+            file_answ(file, 'Слишком большой файл');
             break
     }
 }
 
-/*
-Валидация телефона
- */
+
+/* анимация валидации телефона */
 function validate(phone) {
     phone
         .animate({boxShadow: 'inset 0 0 0px 5px #ff0000'})
         .animate({boxShadow: "inset 0 0 0 0 transparent"});
 }
 
-/*
-Валидация формата и размера файла
- */
+
+/* Анимация валидации формата и размера файла */
+$('input[type="file"]').on('change', function () {
+    file_button($(this));
+});
 function file_button(form_file) {
     if (form_file.val()) {
         form_file.siblings('span')
@@ -100,4 +88,9 @@ function file_button(form_file) {
             .html('Выбрать файл <i>.jpg, .png, .pdf</i>')
             .css({'background': '#999'});
     }
+}
+function file_answ(file, answer) {
+    file.siblings('span')
+        .html(answer)
+        .css({'background': '#ff0000'});
 }
