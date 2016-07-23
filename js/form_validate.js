@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $('#form_').submit(function () {
+    $('#form_a').submit(function () {
         mail($(this));
         return false;
     });

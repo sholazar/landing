@@ -1,5 +1,5 @@
 $(document).ready(function(){
         jQuery(function($){
-            $(".phone").mask("+375 (__) ___-__-__");
+            $("input[name='phone']").mask("+375 (__) ___-__-__");
         });
  });
