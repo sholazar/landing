@@ -15,8 +15,6 @@ function mail(form) {
     } else {
         ajax(form, form_file, message_text)
     }
-
-    return false;
 }
 
 /* ajax */
@@ -32,7 +30,6 @@ function ajax(form, form_file, message_text) {
             succ(answer, form, form_file, message_text);
         }
     });
-
 }
 
 
