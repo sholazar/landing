@@ -14,7 +14,7 @@ gulp.task('sass', function () {
         .pipe(postcss([autopref({browsers: ['last 2 versions']})]))
         .pipe(shorthand())
         .pipe(minify())
-        .pipe(gulp.dest('css')) 
+        .pipe(gulp.dest('css'))
         .pipe(plumber({
             errorHandler: onError
         }))
@@ -27,6 +27,5 @@ function onError(err) {
 gulp.task('swatch', function () {
     gulp.watch('sass/**/*.scss', ['sass']);
 });
-
 
 gulp.task('default', ['swatch']);
