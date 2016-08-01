@@ -8,10 +8,10 @@
 </head>
 <body>
 <?php
-require_once 'construct_theme.php';
+require_once 'theme/construct_theme.php';
 ?>
 </body>
 <?php
-require_once 'construct_script.php';
+require_once 'theme/construct_script.php';
 ?>
 </html>

@@ -1,5 +1,5 @@
 <?php
-if ($scripts_folder = opendir('js')) {
+if ($scripts_folder = opendir('../js')) {
     while (($script = readdir($scripts_folder)) !== false) {
         if (!in_array($script, ['.', '..'])) {
             $scripts[] = $script;

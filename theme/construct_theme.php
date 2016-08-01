@@ -1,5 +1,5 @@
 <?php
-if ($theme = opendir('theme')) {
+if ($theme = opendir('../theme')) {
     while (($block = readdir($theme)) !== false) {
         if (!in_array($block, ['.', '..'])) {
             $blocks[] = $block;
