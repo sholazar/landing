@@ -7,6 +7,8 @@ var plumber = require('gulp-plumber');
 var postcss = require('gulp-postcss');
 var autopref = require('autoprefixer');
 var minify = require('gulp-minify-css');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
 
 gulp.task('sass', function () {
     gulp.src('sass/**/*.scss')
@@ -19,6 +21,15 @@ gulp.task('sass', function () {
             errorHandler: onError
         }))
 });
+
+
+gulp.task('minjs', function() {
+    return gulp.src('js/*.js')
+        //.pipe(concat('vendor.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('js'))
+});
+
 
 function onError(err) {
     console.log(err);
